@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stareyes' character directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0a111d; /* Deep blue night sky of Ulthuan */
+            color: #e0e7ff; /* Soft white, like starlight */
+            background-image:
+                /* Star layer 1 */
+                radial-gradient(1px 1px at 20px 30px, white, transparent),
+                /* Star layer 2 */
+                radial-gradient(1px 1px at 80px 120px, white, transparent),
+                /* Star layer 3 */
+                radial-gradient(1.5px 1.5px at 150px 50px, white, transparent),
+                /* Original nebula */
+                radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 0.7) 0px, transparent 50%),
+                radial-gradient(at 98% 99%, hsla(240, 40%, 20%, 0.8) 0px, transparent 50%);
+            background-repeat: repeat, repeat, repeat, no-repeat, no-repeat;
+            background-size: 200px 200px, 300px 300px, 250px 250px, auto, auto;
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .card {
+            background-color: rgba(18, 28, 48, 0.6); /* Translucent card background */
+            border: 1px solid rgba(113, 137, 194, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        h1 {
+            text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+        }
+        .character-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+        }
+        .character-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px 0 rgba(245, 158, 11, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8">
+
+    <main class="max-w-md w-full mx-auto space-y-8">
+
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="font-cinzel text-4xl sm:text-5xl font-bold text-amber-400 tracking-wider">stareyes' character</h1>
+        </header>
+
+        <!-- Character Links -->
+        <section class="card p-6 sm:p-8">
+            <h2 class="font-cinzel text-xl text-center font-bold text-indigo-300 pb-2 mb-6">Character Directory</h2>
+            <div class="flex flex-col space-y-4">
+                <a href="https://stareyesrp.netlify.app/lyrasunstrider.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="character-button block w-full text-center bg-indigo-600/50 hover:bg-indigo-500/60 border border-indigo-400/50 text-amber-300 font-cinzel text-lg font-bold py-3 px-6 rounded-lg tracking-wider">
+                    Lyra Sunstrider
+                </a>
+                <!-- Future character buttons can be added here -->
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
