@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyra Sunstrider - Dragonheart of Caledor</title>
+    <title>Lyra Sunstrider - Warhammer Fantasy Character</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,32 +37,15 @@
             border-radius: 12px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
-        .dragon-divider {
-            height: 2px;
-            background: linear-gradient(to right, transparent, #f59e0b, #ef4444, #f59e0b, transparent);
-            opacity: 0.6;
-            margin: 1.5rem auto;
-        }
-        h1, h2, h3 {
+        h1, h2 {
             text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
         }
-        .skill-bar-container {
-            width: 100%;
-            height: 12px;
-            background-color: rgba(0,0,0,0.3);
-            border-radius: 6px;
-            border: 1px solid rgba(113, 137, 194, 0.2);
-            overflow: hidden;
-            margin-top: 0.5rem;
-        }
-        .skill-bar {
-            height: 100%;
-            background: linear-gradient(to right, #f59e0b, #ef4444);
-            border-radius: 6px;
+        .trait-title {
+            font-weight: bold;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen p-4 sm:p-6 lg:p-8">
+<body class="antialiased p-4 sm:p-6 lg:p-8">
 
     <main class="max-w-4xl mx-auto space-y-8">
 
@@ -70,9 +53,9 @@
         <header class="text-center py-8">
             <h1 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-amber-400 tracking-wider">Lyra Sunstrider</h1>
             <p class="mt-2 text-xl sm:text-2xl text-indigo-300 font-cinzel tracking-wide">Dragonheart of Caledor</p>
-            <img src="https://cdn.imgchest.com/files/41ef6fc260a6.png" 
+             <img src="https://cdn.imgchest.com/files/41ef6fc260a6.png" 
                  alt="Order Draconis Runemark" 
-                 class="mx-auto mt-6 mb-2 w-32 h-auto invert brightness-0"
+                 class="mx-auto mt-6 mb-2 w-32 h-auto"
                  style="filter: invert(85%) sepia(25%) saturate(1500%) hue-rotate(350deg) brightness(100%) contrast(95%);"
                  onerror="this.onerror=null;this.src='https://placehold.co/96x96/0a111d/e0e7ff?text=Icon'; this.style.filter='none';">
         </header>
@@ -80,49 +63,23 @@
         <!-- Basic Traits -->
         <section class="card p-6">
             <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Basic Traits</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4">
-                <div><strong>Name:</strong> Lyra Sunstrider</div>
-                <div><strong>Nickname:</strong> Dragonheart</div>
-                <div><strong>Sex:</strong> Female</div>
-                <div><strong>Height:</strong> 6'2"</div>
-                <div><strong>Body Type:</strong> Athletic and lean</div>
-                <div><strong>Eyes:</strong> Golden orange</div>
-                <div><strong>Skin:</strong> Fair</div>
-                <div><strong>Hair:</strong> Long, fiery red</div>
-                <div><strong>Birthplace:</strong> Caledor, Ulthuan</div>
-            </div>
-        </section>
-
-        <!-- Appearance & Personality -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Appearance & Personality</h2>
-            <div>
-                <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-2">Physical Appearance</h3>
-                <p class="text-indigo-100/90 leading-relaxed">Lyra possesses the classic, sharp beauty of a High Elf, with an elegant bearing that speaks to her noble lineage and martial discipline. She typically wears practical, yet exquisitely crafted, steel armor that has been blued and etched with swirling draconic motifs that catch the light. Her fiery red hair, a stark and beautiful contrast to the traditional silver and gold of her kin, is usually kept in a series of intricate braids to prevent it from becoming a hindrance in the heat of combat or the rush of flight.</p>
-            </div>
-            <div class="mt-4">
-                <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-2">Personality</h3>
-                <p class="text-indigo-100/90 leading-relaxed">Lyra is courageous to a fault, utterly determined in her pursuits, and fiercely loyal to her people and, above all, her sun drake, Elerin. Her life is one of discipline and purpose; she takes her duties with the utmost seriousness, constantly striving for perfection in her martial prowess. While she holds a deep and abiding respect for the ancient magical traditions of her kin, she finds her own strength and calling not in the arcane, but in the physical challenges of combat and the unparalleled thrill of soaring through the clouds on dragonback. This focus can make her appear stern and unyielding, particularly in the face of injustice, yet beneath that hardened exterior lies a deep well of compassion for those she has sworn to protect.</p>
-            </div>
-        </section>
-        
-        <div class="dragon-divider"></div>
-
-        <!-- Purpose & Theme -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Purpose & Theme</h2>
-            <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-1">Purpose</h3>
-                    <p class="text-indigo-100/90">To stand as a stalwart defender of Caledor's lost culture, embodying and upholding the proud martial traditions of the High Elves against any who would threaten what remains of the Asur.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                        <div><span class="font-bold text-indigo-400">Nickname:</span> Dragonheart</div>
+                        <div><span class="font-bold text-indigo-400">Sex:</span> Female</div>
+                        <div><span class="font-bold text-indigo-400">Height:</span> 6'2"</div>
+                        <div><span class="font-bold text-indigo-400">Body Type:</span> Athletic and lean</div>
+                        <div><span class="font-bold text-indigo-400">Eyes:</span> Golden Orange</div>
+                        <div><span class="font-bold text-indigo-400">Skin:</span> Fair</div>
+                        <div><span class="font-bold text-indigo-400">Hair:</span> Fiery Red</div>
+                        <div><span class="font-bold text-indigo-400">Birthplace:</span> Caledor, Ulthuan</div>
+                    </div>
+                    <p class="mt-4"><span class="font-bold text-indigo-400">Purpose:</span> To defend Caledor and uphold the martial traditions of the High Elves. Grant the world the privledge to once again witness the might of the ancient dragons.</p>
+                    <p class="mt-2"><span class="font-bold text-indigo-400">Physical Appearance:</span> Lyra possesses the classic beauty of a High Elf, with sharp features and an elegant bearing. She often wears practical, yet finely crafted, armor adorned with draconic motifs. Her fiery red hair is usually braided to keep it out of the way during combat or flight.</p>
                 </div>
                 <div>
-                    <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-1">Theme</h3>
-                    <p class="text-indigo-100/90">Valor in the face of darkness, unwavering loyalty, and the profound, mystical bond that can exist between a rider and her dragon.</p>
-                </div>
-                <div>
-                    <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-1">Voice</h3>
-                    <p class="text-indigo-100/90">Strong and commanding, with the clarity of a born leader, yet it softens with an unmistakable warmth and affection when she speaks of her dragon.</p>
+                    <img src="https://cdn.imgchest.com/files/b64791606d23.png" alt="Lyra Sunstrider Appearance" class="rounded-lg shadow-lg w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/500x500/0a111d/e0e7ff?text=Lyra';">
                 </div>
             </div>
         </section>
@@ -130,15 +87,14 @@
         <!-- Character Traits -->
         <section class="card p-6">
             <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Character Traits</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                <div class="trait-item"><strong class="text-red-600">Fatal Flaw:</strong> A deep-seated overconfidence in her own abilities, magnified when Elerin is by her side. She sometimes believes them to be invincible.</div>
-                <div class="trait-item"><strong class="text-red-500">Flaws:</strong> Notoriously impatient and overly direct, she struggles with the subtleties of diplomacy.</div>
-                <div class="trait-item"><strong class="text-purple-500">Fears:</strong> The loss of her sun drake, failing her duty to Caledor, and being unable to fly.</div>
-                <div class="trait-item"><strong class="text-sky-400">Ambition:</strong> To be remembered as one of the greatest Dragon Rider pairs in Caledor's history.</div>
-                <div class="trait-item"><strong class="text-slate-400">Regrets:</strong> Briefly considers the power she might have wielded through magic, but does not dwell on it.</div>
-                <div class="trait-item"><strong class="text-amber-500">Ideals:</strong> Guided by a strict code of honor, duty, courage, and her sacred bond with her dragon.</div>
-                <div class="trait-item"><strong class="text-green-500">Strengths:</strong> Exceptional warrior and master of the longsword and spear. An intuitive dragon rider with absolute loyalty and strong leadership qualities.</div>
-                <div class="trait-item"><strong class="text-orange-500">Weaknesses:</strong> Headstrong and blind to subtle approaches, she often underestimates non-martial threats.</div>
+            <div class="space-y-3 text-lg">
+                <p><span class="trait-title text-red-500">Fatal Flaw:</span> Overconfidence in her abilities, especially when her dragon is by her side.</p>
+                <p><span class="trait-title text-red-400">Flaws:</span> Impatient, sometimes overly direct, struggles with diplomacy.</p>
+                <p><span class="trait-title text-purple-400">Fears:</span> Losing her closest companion, her drake. The failure to live up to the majesty of Caledor's history.</p>
+                <p><span class="trait-title text-blue-400">Ambition:</span> To become a legend like the Dragon Princes of old and secure Ulthuan's safety. To witness her companion age and grow to become the creature they were meant to be.</p>
+                <p><span class="trait-title text-teal-400">Ideals:</span> Honor, duty, courage, and the unbreakable bond with her dragon.</p>
+                <p><span class="trait-title text-green-400">Strengths:</span> Exceptional warrior, skilled dragon rider, unwavering loyalty, strong leadership qualities.</p>
+                <p><span class="trait-title text-yellow-400">Weaknesses:</span> Can be headstrong, struggles with subtle political maneuvering, sometimes underestimates non-martial threats.</p>
             </div>
         </section>
 
@@ -146,54 +102,57 @@
         <section class="card p-6">
             <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Combat Skills</h2>
             <div class="space-y-4">
-                <div>
-                    <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-2">On Foot</h3>
-                    <ul class="list-disc list-inside text-indigo-100/90 space-y-2 pl-4">
-                        <li><strong>Caledorian Greatsword:</strong> Lyra is a master of the traditional High Elf greatsword, a weapon requiring immense strength and precision. Her style is a fluid dance of wide, devastating arcs and swift, targeted thrusts, capable of cleaving through armored foes and monstrous beasts alike.</li>
-                        <li><strong>Blade and Fang Technique:</strong> When speed is paramount, she switches to a dual-wielding style unique to her. She uses a longsword for offense and parrying, while a shorter, dragon-fang dagger in her off-hand creates openings, blocks, and delivers swift, unexpected strikes in close quarters.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-2">Mounted Combat (with Elerin)</h3>
-                    <ul class="list-disc list-inside text-indigo-100/90 space-y-2 pl-4">
-                        <li><strong>Skyfire Lance Charge:</strong> A devastating aerial assault where Lyra and Elerin dive from great heights. Lyra wields a long, bladed lance to pierce the toughest of hides, while Elerin's momentum adds unstoppable force to the strike, often breaking enemy formations in a single pass.</li>
-                        <li><strong>Dragon's Fury Coordination:</strong> Lyra directs Elerin's fiery breath with hand signals and vocal commands, creating a seamless fusion of her blade work and his flame. They can create walls of fire to trap foes or target specific high-value enemies with pinpoint accuracy.</li>
-                        <li><strong>Winged Sentinel Defense:</strong> While airborne, Elerin uses his powerful wings and tail to deflect projectiles and buffet smaller flying enemies, creating a protective zone around Lyra that allows her to focus her attacks without fear of reprisal from archers or other aerial threats.</li>
-                    </ul>
-                </div>
+                <p><span class="font-bold text-amber-400">Blade Dancer of Caledor:</span> Lyra is a master of the two-handed elven greatsword, wielding it with a blend of raw power and elegant precision. Her style is aggressive, focusing on sweeping arcs and powerful cleaves designed to break enemy formations.</p>
+                <p><span class="font-bold text-amber-400">Twin Fangs Style:</span> When unsuited for the greatsword, she seamlessly switches to a dual-wielding technique using a longsword and dagger. This style is a whirlwind of steel, using the main blade for offense and the dagger for parrying, trapping enemy weapons, and delivering swift, unexpected strikes.</p>
+                <p><span class="font-bold text-amber-400">Drake-Lord's Lance:</span> Mounted on Elerin, Lyra is a devastating force. She is an expert with the Dragon Knight's lance, capable of executing perfectly timed aerial charges that can shatter a unit of monstrous cavalry or pierce the hide of a behemoth.</p>
+                <p><span class="font-bold text-amber-400">Skyfire Coordination:</span> Her bond with Elerin allows for unparalleled teamwork. Lyra can direct Elerin's fiery breath attacks with pinpoint accuracy, incinerating specific targets while she engages others, effectively fighting two battles at once.</p>
             </div>
         </section>
 
-        <div class="dragon-divider"></div>
-
-        <!-- History -->
+        <!-- Companion Skills -->
         <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">History</h2>
-            <div class="space-y-4 text-indigo-100/90 leading-relaxed">
-                <p>Born into a noble house of Caledor, Lyra showed an early and profound aptitude for martial training, finding her soul's expression in the clean arc of a sword rather than the complex weave of a spell. Her bond with the sun drake, Elerin, was forged not in a placid, grand ceremony, but in the crucible of survival and shared desperation. During a perilous journey through the jagged Dragonback Mountains, she discovered Elerin as a young drake, grounded and bleeding, his wing pierced by a poisoned Dark Elf bolt after a vicious ambush on his nest. With no thought for her own safety, Lyra defended him fiercely, her blade a blur of silver against the raiders' cruel hooks. In the weeks that followed, she remained by his side, tending to his wound and nursing him back to health, forging a deep, unspoken connection built on mutual trust and a shared, burning defiance. This was not the bond of a master and beast, but of two warriors who had faced death together and emerged stronger.</p>
-                <p>Their training was a dynamic fusion of instinct and discipline. Lyra’s structured elven combat techniques provided a framework for Elerin's wild, fiery spirit. In the beginning, their personalities often clashed—her rigid focus grating against his playful, sometimes stubborn draconic nature. Yet, through countless hours of soaring over the glittering seas of Ulthuan, through mock battles that tested their reflexes and resolve, and during shared, quiet moments under the stars, they learned to anticipate each other's every move, to think and act as a single, devastating entity. They became inseparable, a living symbol of Caledor's enduring might, forever bound by the fire of battle and the unbreakable warmth of their loyalty.</p>
-                <p>Their prowess did not go unnoticed. During a major coastal incursion by Drukhari raiders, Lyra and Elerin proved instrumental in turning the tide of a desperate battle. While other forces were pinned down by dark magic and overwhelming numbers, the pair executed a daring aerial assault, diving through a storm of crossbow bolts to shatter the enemy command structure. Their synergy in battle was breathtaking—a whirlwind of elven steel and roaring dragon flame that carved a path through the heart of the corsair fleet. In recognition of her exceptional valor and their unparalleled bond, the Prince of Caledor formally inducted Lyra into the esteemed Royal Dragonknights. She was no longer just a noble with a dragon companion; she now bore a title that represented the absolute pinnacle of Caledorian martial tradition, a sworn protector of Ulthuan whose legend was only just beginning.</p>
-            </div>
-        </section>
-        
-        <!-- Skills -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Skills</h2>
-            <div>
-                <h3 class="font-cinzel text-lg font-semibold text-amber-400 mb-2">Winds of Magic (0/100)</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar" style="width: 0%;"></div>
-                </div>
-                <p class="text-indigo-100/90 leading-relaxed mt-3">Lyra has no formal training in the Winds of Magic, a path she consciously chose to forgo. Her connection to the potent magical energies of Ulthuan is purely passive, manifesting only as the slight resistance to magical attacks inherent in her elven nature. In all things, she relies on her martial skill and Elerin's fiery breath.</p>
+            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Companion Skills (Elerin)</h2>
+            <div class="space-y-4">
+                <p><span class="font-bold text-amber-400">Sun-Forged Scales:</span> Elerin's hide is a living shield of interlocking scales that shimmer like gold. This natural armor is incredibly resilient, capable of deflecting arrows, glancing away blades, and even absorbing flames with ease.</p>
+                <p><span class="font-bold text-amber-400">Starfire Breath:</span> His primary weapon is a torrent of concentrated fire, hot enough to melt steel and turn flesh to ash. While devastating, it is a finite resource that requires moments to recharge, making its use a tactical decision in the heat of battle.</p>
+                <p><span class="font-bold text-amber-400">Claw and Fang:</span> In close quarters, Elerin is a ferocious combatant. His talons can shred through armor and his powerful jaw can snap bone and shield with terrifying ease. He moves with a predatory grace, striking with the speed of a serpent.</p>
+                <p><span class="font-bold text-amber-400">Starfire Bond:</span> Elerin is fiercely intelligent and shares an empathic bond with Lyra, allowing them to communicate non-verbally in the chaos of a fight. While wild and proud by nature, he is unyieldingly loyal to his rider, displaying a protective instinct that makes him as much a guardian as a mount.</p>
             </div>
         </section>
 
+        <!-- Winds of Magic -->
+        <section class="card p-6">
+            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Winds of Magic</h2>
+            <div class="space-y-2">
+                <p>Lyra has no formal training in the Winds of Magic. Her connection is purely passive, manifesting as a slight resistance to magical attacks due to her inherent elven nature.</p>
+            </div>
+        </section>
+
+        <!-- Backstory -->
+        <section class="card p-6">
+            <h2 class="font-cinzel text-2xl font-bold text-indigo-300 border-b border-indigo-500/30 pb-2 mb-4">Backstory</h2>
+            <div class="space-y-4 prose prose-invert max-w-none text-gray-300">
+                <h3 class="font-cinzel text-xl text-amber-400">Early Years</h3>
+                <p>Born to the noble House of Sunstrider in the heart of Caledor, Lyra’s childhood was one of privilege and expectation. While her peers were drawn to the intricate study of High Magic or the subtle arts of diplomacy, Lyra found her gaze perpetually turned towards the cloud-veiled peaks of the Dragonback Mountains. She spent hours in the great halls of her family’s keep, not reading arcane texts, but tracing the lineage of the great Dragon Princes of old. The tales of Aenarion and Indraugnir were not mere history to her; they were a calling. Her tutors noted with a mix of pride and concern that she possessed a fire more suited to the forge than the forum, a spirit that yearned for the roar of a dragon over the quiet hum of the Winds of Magic.</p>
+                <p>This martial inclination was not merely a fancy. In the training yards, Lyra moved with a grace and ferocity that was unnerving in one so young. While other elven youths practiced the precise, almost dance-like forms of swordsmanship, Lyra’s style was imbued with a raw power and an instinct for combat that could not be taught. She dedicated herself to the mastery of the Caledorian greatsword, her lean frame building the strength required to wield the heavy blade as if it were an extension of her own arm. It was during these years that her core ideals were forged in the sweat and steel of endless practice: honor in every strike, duty to her homeland, and the courage to face any odd.</p>
+                <p>As she grew into a young adult, her ambition outpaced the structured life of her noble house. She grew impatient with ceremonial duties and courtly lessons, her heart set on proving her worth not with words, but with deeds. Hearing tales of Dark Elf corsairs scouting the perilous mountain passes, she saw her chance. Forsaking the safer assignments offered to her, she used her lineage and sheer force of will to join a veteran patrol heading into the treacherous Dragonback range. It was not a quest for glory she sought, but a trial by fire—a chance to test her skills against the ancient enemies of Ulthuan and, perhaps, to come face to face with the destiny she had always dreamed of.</p>
+                
+                <h3 class="font-cinzel text-xl text-amber-400">Middle Years</h3>
+                <p>Deep within the jagged peaks, destiny found her. The patrol was ambushed, a hail of black-fletched, poisoned bolts raining down from the shadows. In the chaos, Lyra was separated from the main force, only to stumble upon the true target of the Druchii raid: a sun drake nest. The assassins had already done their grim work, leaving a single, injured young drake flailing beside his slain mother, a cruel bolt buried in his wing. Seeing the raiders move in for the kill, Lyra acted without hesitation. For hours, her greatsword was a blur of silver, a lone, fiery-haired defender against a tide of malice. She held the pass until the returning patrol finally drove the Dark Elves back, leaving Lyra exhausted and bleeding beside the terrified drake.</p>
+                <p>In the weeks that followed, Lyra refused to leave the young dragon’s side. She named him Elerin, Eltharin for "Starfire," and personally nursed his poisoned wound, a task that required immense patience—a virtue she did not naturally possess. A silent understanding grew between them, a bond forged not of magic or ceremony, but of shared defiance and survival. When Elerin was finally strong enough, their training began. It was a tumultuous process, a clash between Lyra’s rigid, martial discipline and Elerin’s wild, instinctual nature. Yet, through countless flights that started as struggles for control and ended in breathtaking synchronization, they learned to move and think as one warrior.</p>
+                <p>Their first true test came during a Norscan incursion on the eastern coast of Caledor. A fleet of longships had breached the outer patrols, unleashing Chaos-worshipping marauders upon the coastal settlements. While the main host mustered, Lyra and Elerin took to the skies. They were a revelation in battle, a whirlwind of elven steel and dragon flame. They shattered the Norscan front line with a perfectly executed lance charge and routed their shaman-led command with pinpoint gouts of fire. The victory was swift and decisive, and the tale of the "Dragonheart of Sunstrider" began to spread throughout the courts of Ulthuan, earning her the grudging respect of even the most traditionalist Dragon Riders.</p>
+                
+                <h3 class="font-cinzel text-xl text-amber-400">Recent Years</h3>
+                <p>Lyra and Elerin’s growing renown eventually placed them at the forefront of a much larger conflict. A Druchii fleet, far greater than any mere raiding party, launched a surprise assault intended to cripple the strategic port of Sith Rionnasc, the Star-gleam gate. The battle was a maelstrom of chaos, with High Elf sea-guards locked in a desperate struggle against monstrous Hydras and the cold fury of the Dark Elf corsairs. The sky itself was a battlefield, filled with dark pegasi and the menacing silhouettes of the Druchii fleet. It was here that Lyra’s overconfidence became a weapon; she and Elerin undertook a suicidal dive straight towards the flagship, a vessel commanded by a dreaded sorcerer of Ghrond.</p>
+                <p>Their daring assault was the turning point. Ignoring the storm of repeater bolt-thrower fire, they descended upon the ship's command deck. Lyra’s blade cut down the sorcerer’s elite guard while Elerin’s fire cleansed the deck and shattered the master’s profane altar, breaking the dark enchantments that were turning the tide of the naval battle. With their command structure broken and their dark magic severed, the Druchii fleet faltered and was soon routed by the resurgent High Elf forces. The victory at Sith Rionnasc was costly, but it cemented Lyra’s status as one of the greatest warriors of her generation. In a grand ceremony, the Prince of Caledor formally inducted her into the Royal Dragonknights, bestowing upon her a title that carried the weight of ages.</p>
+                <p>In the time since, Lyra has shouldered her new duties with the same fierce determination she applies to all things. As a Royal Dragonknight, she is no longer just a warrior, but a leader and a symbol. She trains new aspirants, leads strategic aerial patrols along Ulthuan’s troubled coastlines, and stands as a sentinel against the encroaching darkness. The world grows more perilous; Chaos warbands press further south, the shadow of Naggaroth looms ever-present, and other, more insidious threats stir in the dark places of the world. Lyra and Elerin now fly in the vanguard of a gathering storm, their bond stronger than ever, their resolve absolute, ready to meet whatever fate has in store for them and their sacred homeland.</p>
+            </div>
+        </section>
 
     </main>
 
 </body>
 </html>
-
 
 
 
