@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,177 +9,249 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: #f0f4f8; /* Luminous, pale sky of Hysh */
-            color: #1e293b; /* Dark slate for readability */
-            background-image:
-                /* Subtle light rays */
-                radial-gradient(at 10% 10%, hsla(40, 100%, 95%, 0.5) 0px, transparent 50%),
-                radial-gradient(at 80% 90%, hsla(200, 100%, 95%, 0.4) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, hsla(0, 0%, 100%, 0.3) 0px, transparent 50%);
-            background-repeat: no-repeat;
-        }
         .font-cinzel {
             font-family: 'Cinzel', serif;
         }
-        .card {
-            background-color: rgba(255, 255, 255, 0.7); /* Translucent white card */
-            border: 1px solid rgba(148, 163, 184, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-        }
-        .trait-title {
-            font-weight: bold;
-        }
         .equipment-item-title {
             font-weight: bold;
-            color: #854d0e; /* A rich, earthy brown for titles */
+        }
+        /* Theme Styles */
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            transition-property: color, background-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 500ms;
+        }
+
+        /* --- Light Mode Colors --- */
+        html:not(.dark) body {
+            background-color: #f1f5f9; /* Off-white (slate-100) */
+            color: #1e293b; /* Dark text */
+        }
+        html:not(.dark) .card {
+            background-color: rgba(255, 255, 255, 0.7); /* Translucent White */
+        }
+        html:not(.dark) .header-text {
+            color: #1e3a8a; /* blue-900 */
+        }
+        html:not(.dark) .label-text {
+            color: #1e40af; /* blue-800 */
+        }
+        html:not(.dark) .subtitle-text {
+            color: #1e40af; /* blue-800 */
+        }
+        html:not(.dark) .header-border {
+             border-color: #bfdbfe; /* blue-200 */
+        }
+
+
+        /* --- Dark Mode Colors --- */
+        html.dark body {
+            background-color: #0f172a; /* Dark Blue (slate-900) */
+            color: #cbd5e1; /* Light text */
+        }
+        html.dark .card {
+            background-color: rgba(30, 41, 59, 0.6); /* Translucent Lighter dark blue (slate-800) */
+        }
+        html.dark .header-text {
+            color: #e2e8f0; /* slate-200 */
+        }
+        html.dark .label-text {
+            color: #94a3b8; /* slate-400 */
+        }
+        html.dark .subtitle-text {
+             color: #94a3b8; /* slate-400 */
+        }
+        html.dark .header-border {
+             border-color: rgba(51, 65, 85, 0.5); /* slate-700 with opacity */
         }
     </style>
+    <script>
+        // On page load, apply theme from localStorage to avoid FOUC (Flash of Unstyled Content)
+        if (localStorage.theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          // Default to light mode
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light'); 
+        }
+    </script>
 </head>
 <body class="antialiased p-4 sm:p-6 lg:p-8">
-
-    <a href="https://stareyesrp.github.io/" title="Return to Home" class="fixed top-4 left-4 z-10 p-2 rounded-full bg-white/60 backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-    </a>
+    
+    <div class="fixed top-4 left-4 z-10 flex items-center space-x-2">
+        <a href="https://stareyesrp.github.io/" title="Return to Home" class="p-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+        </a>
+        <button id="theme-toggle" title="Toggle Dark Mode" class="p-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg id="theme-toggle-dark-icon" class="h-6 w-6 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg id="theme-toggle-light-icon" class="h-6 w-6 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+        </button>
+    </div>
 
     <main class="max-w-4xl mx-auto space-y-8">
 
         <!-- Header -->
         <header class="text-center py-8">
-            <h1 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-amber-500 tracking-wider">Lyra Sunstrider</h1>
-            <p class="mt-2 text-xl sm:text-2xl text-slate-600 font-cinzel tracking-wide">Dragonheart of Hysh</p>
-             <img src="https://cdn.imgchest.com/files/41ef6fc260a6.png" 
+            <h1 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-amber-500 dark:text-amber-400 tracking-wider">Lyra Sunstrider</h1>
+            <p class="mt-2 text-xl sm:text-2xl subtitle-text font-cinzel tracking-wide">Dragonheart of Hysh</p>
+             <img id="runemark-img" src="https://cdn.imgchest.com/files/41ef6fc260a6.png" 
                  alt="Order Draconis Runemark" 
                  class="mx-auto mt-6 mb-2 w-32 h-auto"
-                 style="filter: invert(20%) sepia(10%) saturate(1000%) hue-rotate(180deg) brightness(90%) contrast(90%);"
                  onerror="this.onerror=null;this.src='https://placehold.co/96x96/f0f4f8/1e293b?text=Icon'; this.style.filter='none';">
         </header>
 
-        <!-- Basic Traits -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Basic Traits</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                        <div><span class="font-bold text-slate-600">Nickname:</span> Dragonheart</div>
-                        <div><span class="font-bold text-slate-600">Sex:</span> Female</div>
-                        <div><span class="font-bold text-slate-600">Height:</span> 6'2"</div>
-                        <div><span class="font-bold text-slate-600">Body Type:</span> Athletic and lean</div>
-                        <div><span class="font-bold text-slate-600">Eyes:</span> Golden Orange</div>
-                        <div><span class="font-bold text-slate-600">Skin:</span> Fair</div>
-                        <div><span class="font-bold text-slate-600">Hair:</span> Fiery Red</div>
-                        <div><span class="font-bold text-slate-600">Birthplace:</span> The Aethelgard, Hysh</div>
+        <!-- Dynamic Style for image filter -->
+        <style>
+            #runemark-img {
+                filter: invert(20%) sepia(10%) saturate(1000%) hue-rotate(180deg) brightness(90%) contrast(90%);
+            }
+            .dark #runemark-img {
+                filter: invert(85%) sepia(25%) saturate(1500%) hue-rotate(350deg) brightness(100%) contrast(95%);
+            }
+        </style>
+
+        <!-- All Cards -->
+        <div class="space-y-8">
+            <!-- Basic Traits -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Basic Traits</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                            <div><span class="font-bold label-text">Nickname:</span> Dragonheart</div>
+                            <div><span class="font-bold label-text">Sex:</span> Female</div>
+                            <div><span class="font-bold label-text">Height:</span> 6'2"</div>
+                            <div><span class="font-bold label-text">Body Type:</span> Athletic and lean</div>
+                            <div><span class="font-bold label-text">Eyes:</span> Golden Orange</div>
+                            <div><span class="font-bold label-text">Skin:</span> Fair</div>
+                            <div><span class="font-bold label-text">Hair:</span> Fiery Red</div>
+                            <div><span class="font-bold label-text">Birthplace:</span> The Aethelgard, Hysh</div>
+                        </div>
+                        <p class="mt-4"><span class="font-bold label-text">Purpose:</span> To defend the Aethelgard and uphold the traditions of the Order Draconis. To stand as a bulwark against Chaos in the Realm of Light.</p>
+                        <p class="mt-2"><span class="font-bold label-text">Physical Appearance:</span> Lyra possesses the classic beauty of an Aelf, with sharp features and an elegant bearing. She often wears practical, yet finely crafted, armor adorned with draconic motifs. Her fiery red hair is usually braided to keep it out of the way during combat or flight.</p>
                     </div>
-                    <p class="mt-4"><span class="font-bold text-slate-600">Purpose:</span> To defend the Aethelgard and uphold the traditions of the Order Draconis. To stand as a bulwark against Chaos in the Realm of Light.</p>
-                    <p class="mt-2"><span class="font-bold text-slate-600">Physical Appearance:</span> Lyra possesses the classic beauty of an Aelf, with sharp features and an elegant bearing. She often wears practical, yet finely crafted, armor adorned with draconic motifs. Her fiery red hair is usually braided to keep it out of the way during combat or flight.</p>
+                    <div>
+                        <img src="https://cdn.imgchest.com/files/b64791606d23.png" alt="Lyra Sunstrider Appearance" class="rounded-lg shadow-lg w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/500x500/f0f4f8/1e293b?text=Lyra';">
+                    </div>
                 </div>
-                <div>
-                    <img src="https://cdn.imgchest.com/files/b64791606d23.png" alt="Lyra Sunstrider Appearance" class="rounded-lg shadow-lg w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/500x500/f0f4f8/1e293b?text=Lyra';">
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Character Traits -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Character Traits</h2>
-            <div class="space-y-3 text-lg">
-                <p><span class="trait-title text-red-600">Fatal Flaw:</span> Overconfidence in her abilities, especially when her dragon is by her side.</p>
-                <p><span class="trait-title text-red-500">Flaws:</span> Impatient, sometimes overly direct, struggles with diplomacy.</p>
-                <p><span class="trait-title text-purple-600">Fears:</span> Losing her closest companion, her drake. The failure to live up to the legacy of the Order Draconis.</p>
-                <p><span class="trait-title text-blue-600">Ambition:</span> To become a legend like the Dragonlords of old and secure the safety of the Cities of Sigmar.</p>
-                <p><span class="trait-title text-teal-600">Ideals:</span> Honor, duty, courage, and the unbreakable bond with her dragon.</p>
-                <p><span class="trait-title text-green-600">Strengths:</span> Exceptional warrior, skilled dragon rider, unwavering loyalty, strong leadership qualities.</p>
-                <p><span class="trait-title text-yellow-600">Weaknesses:</span> Can be headstrong, struggles with subtle political maneuvering, sometimes underestimates non-martial threats.</p>
-            </div>
-        </section>
-
-        <!-- Combat Skills -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Combat Skills</h2>
-            <div class="space-y-4">
-                <p><span class="font-bold text-amber-600">Blade Dancer of Hysh:</span> Lyra is a master of the two-handed aelven greatsword, wielding it with a blend of raw power and elegant precision. Her style is aggressive, focusing on sweeping arcs and powerful cleaves designed to break enemy formations.</p>
-                <p><span class="font-bold text-amber-600">Twin Fangs Style:</span> When unsuited for the greatsword, she seamlessly switches to a dual-wielding technique using a longsword and dagger. This style is a whirlwind of steel, using the main blade for offense and the dagger for parrying, trapping enemy weapons, and delivering swift, unexpected strikes.</p>
-                <p><span class="font-bold text-amber-600">Dragonlord's Lance:</span> Mounted on Elerin, Lyra is a devastating force. She is an expert with the Dragon Knight's lance, capable of executing perfectly timed aerial charges that can shatter a unit of monstrous cavalry or pierce the hide of a behemoth.</p>
-                <p><span class="font-bold text-amber-600">Skyfire Coordination:</span> Her bond with Elerin allows for unparalleled teamwork. Lyra can direct Elerin's fiery breath attacks with pinpoint accuracy, incinerating specific targets while she engages others, effectively fighting two battles at once.</p>
-            </div>
-        </section>
-
-        <!-- Equipment -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Equipment</h2>
-            <div class="space-y-4">
-                <div>
-                    <p><span class="equipment-item-title">Sol-Kael (Masterwork):</span> A heavy, perfectly balanced greatsword forged in the heart of the Aethelgard, capable of cleaving through gromril armor.</p>
+            <!-- Character Traits -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Character Traits</h2>
+                <div class="space-y-3 text-lg">
+                    <p><span class="trait-title text-red-600 dark:text-red-400">Fatal Flaw:</span> Overconfidence in her abilities, especially when her dragon is by her side.</p>
+                    <p><span class="trait-title text-red-500 dark:text-red-500">Flaws:</span> Impatient, sometimes overly direct, struggles with diplomacy.</p>
+                    <p><span class="trait-title text-purple-600 dark:text-purple-400">Fears:</span> Losing her closest companion, her drake. The failure to live up to the legacy of the Order Draconis.</p>
+                    <p><span class="trait-title text-blue-600 dark:text-blue-400">Ambition:</span> To become a legend like the Dragonlords of old and secure the safety of the Cities of Sigmar.</p>
+                    <p><span class="trait-title text-teal-600 dark:text-teal-400">Ideals:</span> Honor, duty, courage, and the unbreakable bond with her dragon.</p>
+                    <p><span class="trait-title text-green-600 dark:text-green-400">Strengths:</span> Exceptional warrior, skilled dragon rider, unwavering loyalty, strong leadership qualities.</p>
+                    <p><span class="trait-title text-yellow-600 dark:text-yellow-400">Weaknesses:</span> Can be headstrong, struggles with subtle political maneuvering, sometimes underestimates non-martial threats.</p>
                 </div>
-                <div>
-                    <p><span class="equipment-item-title">Dragon Lance (Exceptional):</span> A long, reinforced lance designed for devastating aerial charges from dragonback.</p>
-                </div>
-                <div>
-                    <p><span class="equipment-item-title">Ithilmar Armor (Exceptional):</span> A full suit of lightweight, resilient aelven armor, gilded with draconic symbols that shimmer with Hyshian light.</p>
-                </div>
-                <div>
-                    <p><span class="equipment-item-title">Aelven Longsword (Finely-Crafted):</span> A single-edged blade, swift and sharp for her dual-wielding style when the greatsword is not practical.</p>
-                </div>
-                <div>
-                    <p><span class="equipment-item-title">Dragon Fang Dagger (Magical):</span> A serrated dagger created from one of Elerin's own shed fangs, enchanted to be unbreaking and unnaturally sharp.</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Companion -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Companion</h2>
-            <div class="space-y-4">
-                <p><span class="font-bold text-amber-600">Elerin, the Sun Dragon:</span> Sun Dragons are a noble and fiery breed of dragon. Known for their golden scales that shimmer with inner light, their devastating starfire breath, and their fierce hot-blooded temperament. While considered young and impetuous compared to the ancient Star Drakes, they are incredibly powerful and form unbreakable empathic bonds with the Aelven riders of the Order Draconis who are brave enough to earn their loyalty.</p>
-            </div>
-        </section>
+            <!-- Combat Skills -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Combat Skills</h2>
+                <div class="space-y-4">
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Blade Dancer of Hysh:</span> Lyra is a master of the two-handed aelven greatsword, wielding it with a blend of raw power and elegant precision. Her style is aggressive, focusing on sweeping arcs and powerful cleaves designed to break enemy formations.</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Twin Fangs Style:</span> When unsuited for the greatsword, she seamlessly switches to a dual-wielding technique using a longsword and dagger. This style is a whirlwind of steel, using the main blade for offense and the dagger for parrying, trapping enemy weapons, and delivering swift, unexpected strikes.</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Dragonlord's Lance:</span> Mounted on Elerin, Lyra is a devastating force. She is an expert with the Dragon Knight's lance, capable of executing perfectly timed aerial charges that can shatter a unit of monstrous cavalry or pierce the hide of a behemoth.</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Skyfire Coordination:</span> Her bond with Elerin allows for unparalleled teamwork. Lyra can direct Elerin's fiery breath attacks with pinpoint accuracy, incinerating specific targets while she engages others, effectively fighting two battles at once.</p>
+                </div>
+            </section>
 
-        <!-- Companion Skills -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Companion Skills (Elerin)</h2>
-            <div class="space-y-4">
-                <p><span class="font-bold text-amber-600">Sun-Forged Scales:</span> Elerin's hide is a living shield of interlocking scales that shimmer like gold. This natural armor is incredibly resilient, capable of deflecting arrows, glancing away blades, and even absorbing flames with ease.</p>
-                <p><span class="font-bold text-amber-600">Starfire Breath:</span> His primary weapon is a torrent of concentrated fire, hot enough to melt steel and turn flesh to ash. While devastating, it is a finite resource that requires moments to recharge, making its use a tactical decision in the heat of battle.</p>
-                <p><span class="font-bold text-amber-600">Claw and Fang:</span> In close quarters, Elerin is a ferocious combatant. His talons can shred through armor and his powerful jaw can snap bone and shield with terrifying ease. He moves with a predatory grace, striking with the speed of a serpent.</p>
-                <p><span class="font-bold text-amber-600">Empathic Bond:</span> Elerin is fiercely intelligent and shares an empathic bond with Lyra, allowing them to communicate non-verbally in the chaos of a fight. While wild and proud by nature, he is unyieldingly loyal to his rider, displaying a protective instinct that makes him as much a guardian as a mount.</p>
-            </div>
-        </section>
+            <!-- Equipment -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Equipment</h2>
+                <div class="space-y-4">
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">Sol-Kael (Masterwork):</span> A heavy, perfectly balanced greatsword forged in the heart of the Aethelgard, capable of cleaving through gromril armor.</p></div>
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">Dragon Lance (Exceptional):</span> A long, reinforced lance designed for devastating aerial charges from dragonback.</p></div>
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">Ithilmar Armor (Exceptional):</span> A full suit of lightweight, resilient aelven armor, gilded with draconic symbols that shimmer with Hyshian light.</p></div>
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">Aelven Longsword (Finely-Crafted):</span> A single-edged blade, swift and sharp for her dual-wielding style when the greatsword is not practical.</p></div>
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">Dragon Fang Dagger (Magical):</span> A serrated dagger created from one of Elerin's own shed fangs, enchanted to be unbreaking and unnaturally sharp.</p></div>
+                </div>
+            </section>
 
-        <!-- Aethyric Connection -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Aethyric Connection</h2>
-            <div class="space-y-2">
+            <!-- Companion -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Companion</h2>
+                <p><span class="font-bold text-amber-600 dark:text-amber-500">Elerin, the Sun Dragon:</span> Sun Dragons are a noble and fiery breed of dragon native to the Realm of Light, Hysh. Known for their golden scales that shimmer with inner light, their devastating starfire breath, and their fierce, hot-blooded temperament. While considered young and impetuous compared to the ancient Star Drakes, they are incredibly powerful and form unbreakable, empathic bonds with the Aelven riders of the Order Draconis who are brave enough to earn their loyalty.</p>
+            </section>
+
+            <!-- Companion Skills -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Companion Skills (Elerin)</h2>
+                <div class="space-y-4">
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Sun-Forged Scales:</span> Elerin's hide is a living shield of interlocking scales that shimmer like gold. This natural armor is incredibly resilient, capable of deflecting arrows, glancing away blades, and even absorbing flames with ease.</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Starfire Breath:</span> His primary weapon is a torrent of concentrated fire, hot enough to melt steel and turn flesh to ash. While devastating, it is a finite resource that requires moments to recharge, making its use a tactical decision in the heat of battle.</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Claw and Fang:</span> In close quarters, Elerin is a ferocious combatant. His talons can shred through armor and his powerful jaw can snap bone and shield with terrifying ease. He moves with a predatory grace, striking with the speed of a serpent.</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">Empathic Bond:</span> Elerin is fiercely intelligent and shares an empathic bond with Lyra, allowing them to communicate non-verbally in the chaos of a fight. While wild and proud by nature, he is unyieldingly loyal to his rider, displaying a protective instinct that makes him as much a guardian as a mount.</p>
+                </div>
+            </section>
+
+            <!-- Aethyric Connection -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Aethyric Connection</h2>
                 <p>Lyra has no formal training in the magic of the realms. Her connection to the Aether is purely passive, manifesting as a slight resistance to hostile magics due to her inherent Aelven nature and her proximity to the pure energies of Hysh.</p>
-            </div>
-        </section>
+            </section>
 
-        <!-- Backstory -->
-        <section class="card p-6">
-            <h2 class="font-cinzel text-2xl font-bold text-slate-700 border-b border-slate-500/30 pb-2 mb-4">Backstory</h2>
-            <div class="space-y-4 prose prose-slate max-w-none">
-                <p>Born to the noble House of Sunstrider in the Aethelgard, a mountain fortress-city in the Realm of Light, Hysh, Lyra’s childhood was one of privilege and expectation. While her peers were drawn to the intricate study of Hyshian High Magic or the subtle arts of diplomacy, Lyra found her gaze perpetually turned towards the cloud-veiled peaks of the Dragon Spine Mountains. The ancient traditions of the Order Draconis, preserved by her family since their flight from the World-That-Was, were not mere history to her; they were a calling. Her tutors noted with a mix of pride and concern that she possessed a fire more suited to the forge than the forum, a spirit that yearned for the roar of a dragon over the quiet hum of the magic of Hysh.</p>
-                <p>This martial inclination was not merely a fancy. In the training yards, Lyra moved with a grace and ferocity that was unnerving in one so young. While other aelven youths practiced the precise, almost dance-like forms of swordsmanship, Lyra’s style was imbued with a raw power and an instinct for combat that could not be taught. She dedicated herself to the mastery of the greatsword, her lean frame building the strength required to wield the heavy blade as if it were an extension of her own arm. It was during these years that her core ideals were forged in the sweat and steel of endless practice: honor in every strike, duty to her homeland, and the courage to face any foe.</p>
-                <p>As she grew into a young adult, her ambition outpaced the structured life of her noble house. She grew impatient with ceremonial duties and courtly lessons, her heart set on proving her worth not with words, but with deeds. Hearing tales of Hedonite warbands scouting the perilous mountain passes, she saw her chance. Forsaking the safer assignments offered to her, she used her lineage and sheer force of will to join a veteran patrol heading into the treacherous Dragon Spine range. It was not a quest for glory she sought, but a trial by fire—a chance to test her skills against the agents of the Dark Prince and, perhaps, to come face to face with the destiny she had always dreamed of.</p>
-                <p>Deep within the jagged peaks, destiny found her. The patrol was ambushed, a hail of beguiling spells and exquisite cruelties raining down from the shadows. In the chaos, Lyra was separated from the main force, only to stumble upon the true target of the Slaaneshi raid: a sun drake nest. The depraved warriors had already done their grim work, leaving a single, injured young drake flailing beside his slain mother, a cruel, poisoned blade buried in his wing. Seeing the Hedonites move in for the kill, Lyra acted without hesitation. For hours, her greatsword was a blur of silver, a lone, fiery-haired defender against a tide of malice. She held the pass until the returning patrol finally drove the Chaos-worshippers back, leaving Lyra exhausted and bleeding beside the terrified drake.</p>
-                <p>In the weeks that followed, Lyra refused to leave the young dragon’s side. She named him Elerin, Eltharin for "Starfire," and personally nursed his poisoned wound, a task that required immense patience—a virtue she did not naturally possess. A silent, empathic bond grew between them, forged not of magic or ceremony, but of shared defiance and survival. When Elerin was finally strong enough, their training began. It was a tumultuous process, a clash between Lyra’s rigid, martial discipline and Elerin’s wild, solar nature. Yet, through countless flights that started as struggles for control and ended in breathtaking synchronization, they learned to move and think as one warrior.</p>
-                <p>Their first true test came during an incursion by the Slaves to Darkness on the eastern coast of their Hyshian enclave. A fleet of longships had breached the outer patrols, unleashing Chaos-worshipping marauders upon the coastal settlements. While the main host mustered, Lyra and Elerin took to the skies. They were a revelation in battle, a whirlwind of aelven steel and dragon flame. They shattered the enemy front line with a perfectly executed lance charge and routed their shaman-led command with pinpoint gouts of fire. The victory was swift and decisive, and the tale of the "Dragonheart of the Sunstriders" began to spread throughout the Cities of Sigmar, earning her the grudging respect of even the most traditionalist Dragonlords.</p>
-                <p>Lyra and Elerin’s growing renown eventually placed them at the forefront of a much larger conflict. A Scourge Privateer fleet, allied with a powerful Slaaneshi host, launched a surprise assault intended to cripple the strategic port of Helioch, the Sun-gleam Gate. The battle was a maelstrom of chaos, with aelven sea-guards locked in a desperate struggle against monstrous Hydras and the cold fury of the corsairs. The sky itself was a battlefield, filled with dark pegasi and the menacing silhouettes of the enemy fleet. It was here that Lyra’s overconfidence became a weapon; she and Elerin undertook a suicidal dive straight towards the flagship, a vessel commanded by a dreaded Lord of Pain.</p>
-                <p>Their daring assault was the turning point. Ignoring the storm of repeater bolt-thrower fire, they descended upon the ship's command deck. Lyra’s blade cut down the Chaos Lord’s elite guard while Elerin’s fire cleansed the deck and shattered the master’s profane altar, breaking the dark enchantments that were turning the tide of the naval battle. With their command structure broken and their dark magic severed, the enemy fleet faltered and was soon routed by the resurgent Aelven forces. The victory at Helioch was costly, but it cemented Lyra’s status as one of the greatest warriors of her generation. In a grand ceremony, the Lord of the Aethelgard formally inducted her into the Royal Dragonknights, bestowing upon her a title that carried the weight of ages.</p>
-                <p>In the time since, Lyra has shouldered her new duties with the same fierce determination she applies to all things. As a Royal Dragonknight, she is no longer just a warrior, but a leader and a symbol. She trains new aspirants, leads strategic aerial patrols along Hysh’s troubled coastlines, and stands as a sentinel against the encroaching darkness. The Mortal Realms grow more perilous; Chaos warbands press ever inward, the shadow of Ulgu looms ever-present, and other, more insidious threats stir in the dark places of the realms. Lyra and Elerin now fly in the vanguard of a gathering storm, their bond stronger than ever, their resolve absolute, ready to meet whatever fate has in store for them and their sacred homeland.</p>
-            </div>
-        </section>
-
+            <!-- Backstory -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Backstory</h2>
+                <div class="space-y-4 prose prose-slate dark:prose-invert max-w-none">
+                    <p>Born to the noble House of Sunstrider in the Aethelgard, a mountain fortress-city in the Realm of Light, Hysh, Lyra’s childhood was one of privilege and expectation. While her peers were drawn to the intricate study of Hyshian High Magic or the subtle arts of diplomacy, Lyra found her gaze perpetually turned towards the cloud-veiled peaks of the Dragon Spine Mountains. The ancient traditions of the Order Draconis, preserved by her family since their flight from the World-That-Was, were not mere history to her; they were a calling. Her tutors noted with a mix of pride and concern that she possessed a fire more suited to the forge than the forum, a spirit that yearned for the roar of a dragon over the quiet hum of the magic of Hysh.</p>
+                    <p>This martial inclination was not merely a fancy. In the training yards, Lyra moved with a grace and ferocity that was unnerving in one so young. While other aelven youths practiced the precise, almost dance-like forms of swordsmanship, Lyra’s style was imbued with a raw power and an instinct for combat that could not be taught. She dedicated herself to the mastery of the greatsword, her lean frame building the strength required to wield the heavy blade as if it were an extension of her own arm. It was during these years that her core ideals were forged in the sweat and steel of endless practice: honor in every strike, duty to her homeland, and the courage to face any foe.</p>
+                    <p>As she grew into a young adult, her ambition outpaced the structured life of her noble house. She grew impatient with ceremonial duties and courtly lessons, her heart set on proving her worth not with words, but with deeds. Hearing tales of Hedonite warbands scouting the perilous mountain passes, she saw her chance. Forsaking the safer assignments offered to her, she used her lineage and sheer force of will to join a veteran patrol heading into the treacherous Dragon Spine range. It was not a quest for glory she sought, but a trial by fire—a chance to test her skills against the agents of the Dark Prince and, perhaps, to come face to face with the destiny she had always dreamed of.</p>
+                    <p>Deep within the jagged peaks, destiny found her. The patrol was ambushed, a hail of beguiling spells and exquisite cruelties raining down from the shadows. In the chaos, Lyra was separated from the main force, only to stumble upon the true target of the Slaaneshi raid: a sun drake nest. The depraved warriors had already done their grim work, leaving a single, injured young drake flailing beside his slain mother, a cruel, poisoned blade buried in his wing. Seeing the Hedonites move in for the kill, Lyra acted without hesitation. For hours, her greatsword was a blur of silver, a lone, fiery-haired defender against a tide of malice. She held the pass until the returning patrol finally drove the Chaos-worshippers back, leaving Lyra exhausted and bleeding beside the terrified drake.</p>
+                    <p>In the weeks that followed, Lyra refused to leave the young dragon’s side. She named him Elerin, Eltharin for "Starfire," and personally nursed his poisoned wound, a task that required immense patience—a virtue she did not naturally possess. A silent, empathic bond grew between them, forged not of magic or ceremony, but of shared defiance and survival. When Elerin was finally strong enough, their training began. It was a tumultuous process, a clash between Lyra’s rigid, martial discipline and Elerin’s wild, solar nature. Yet, through countless flights that started as struggles for control and ended in breathtaking synchronization, they learned to move and think as one warrior.</p>
+                    <p>Their first true test came during an incursion by the Slaves to Darkness on the eastern coast of their Hyshian enclave. A fleet of longships had breached the outer patrols, unleashing Chaos-worshipping marauders upon the coastal settlements. While the main host mustered, Lyra and Elerin took to the skies. They were a revelation in battle, a whirlwind of aelven steel and dragon flame. They shattered the enemy front line with a perfectly executed lance charge and routed their shaman-led command with pinpoint gouts of fire. The victory was swift and decisive, and the tale of the "Dragonheart of the Sunstriders" began to spread throughout the Cities of Sigmar, earning her the grudging respect of even the most traditionalist Dragonlords.</p>
+                    <p>Lyra and Elerin’s growing renown eventually placed them at the forefront of a much larger conflict. A Scourge Privateer fleet, allied with a powerful Slaaneshi host, launched a surprise assault intended to cripple the strategic port of Helioch, the Sun-gleam Gate. The battle was a maelstrom of chaos, with aelven sea-guards locked in a desperate struggle against monstrous Hydras and the cold fury of the corsairs. The sky itself was a battlefield, filled with dark pegasi and the menacing silhouettes of the enemy fleet. It was here that Lyra’s overconfidence became a weapon; she and Elerin undertook a suicidal dive straight towards the flagship, a vessel commanded by a dreaded Lord of Pain.</p>
+                    <p>Their daring assault was the turning point. Ignoring the storm of repeater bolt-thrower fire, they descended upon the ship's command deck. Lyra’s blade cut down the Chaos Lord’s elite guard while Elerin’s fire cleansed the deck and shattered the master’s profane altar, a an act that broke the dark enchantments that were turning the tide of the naval battle. With their command structure broken and their dark magic severed, the enemy fleet faltered and was soon routed by the resurgent Aelven forces. The victory at Helioch was costly, but it cemented Lyra’s status as one of the greatest warriors of her generation. In a grand ceremony, the Lord of the Aethelgard formally inducted her into the Royal Dragonknights, bestowingupon her a title that carried the weight of ages.</p>
+                    <p>In the time since, Lyra has shoulder her new duties with the same fierce determination she applies to all things. As a Royal Dragonknight, she is no longer just a warrior, but a leader and a symbol. She trains new aspirants, leads strategic aerial patrols along Hysh’s troubled coastlines, and stands as a sentinel against the encroaching darkness. The Mortal Realms grow more perilous; Chaos warbands press ever inward, the shadow of Ulgu looms ever-present, and other, more insidious threats stir in the dark places of the realms. Lyra and Elerin now fly in the vanguard of a gathering storm, their bond stronger than ever, their resolve absolute, ready to meet whatever fate has in store for them and their sacred homeland.</p>
+                </div>
+            </section>
+        </div>
     </main>
 
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme() {
+            const isDarkMode = localStorage.getItem('theme') === 'dark';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            const isDarkMode = localStorage.getItem('theme') === 'dark';
+            if (isDarkMode) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+            applyTheme();
+        });
+
+        // Apply theme on initial load to set icons and class correctly
+        applyTheme();
+    </script>
 </body>
 </html>
 
