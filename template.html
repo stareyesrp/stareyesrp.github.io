@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Profile Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .equipment-item-title {
+            font-weight: bold;
+        }
+        /* Theme Styles */
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            transition-property: color, background-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 500ms;
+        }
+
+        /* --- Light Mode Colors --- */
+        html:not(.dark) body {
+            background-color: #f1f5f9; /* Off-white (slate-100) */
+            color: #1e293b; /* Dark text */
+        }
+        html:not(.dark) .card {
+            background-color: rgba(255, 255, 255, 0.7); /* Translucent White */
+        }
+        html:not(.dark) .header-text {
+            color: #1e3a8a; /* blue-900 */
+        }
+        html:not(.dark) .label-text {
+            color: #1e40af; /* blue-800 */
+        }
+        html:not(.dark) .subtitle-text {
+            color: #1e40af; /* blue-800 */
+        }
+        html:not(.dark) .header-border {
+             border-color: #bfdbfe; /* blue-200 */
+        }
+
+
+        /* --- Dark Mode Colors --- */
+        html.dark body {
+            background-color: #0f172a; /* Dark Blue (slate-900) */
+            color: #cbd5e1; /* Light text */
+        }
+        html.dark .card {
+            background-color: rgba(30, 41, 59, 0.6); /* Translucent Lighter dark blue (slate-800) */
+        }
+        html.dark .header-text {
+            color: #e2e8f0; /* slate-200 */
+        }
+        html.dark .label-text {
+            color: #94a3b8; /* slate-400 */
+        }
+        html.dark .subtitle-text {
+             color: #94a3b8; /* slate-400 */
+        }
+        html.dark .header-border {
+             border-color: rgba(51, 65, 85, 0.5); /* slate-700 with opacity */
+        }
+    </style>
+    <script>
+        // On page load, apply theme from localStorage to avoid FOUC (Flash of Unstyled Content)
+        if (localStorage.theme === 'light') {
+          // If explicitly set to light, use light mode
+          document.documentElement.classList.remove('dark');
+        } else {
+          // Default to dark mode
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark'); 
+        }
+    </script>
+</head>
+<body class="antialiased p-4 sm:p-6 lg:p-8">
+    
+    <div class="fixed top-4 left-4 z-10 flex items-center space-x-2">
+        <a href="https://stareyesrp.github.io/" title="Return to Home" class="p-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700 dark:text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+        </a>
+        <button id="theme-toggle" title="Toggle Dark Mode" class="p-2 rounded-full bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg id="theme-toggle-dark-icon" class="h-6 w-6 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg id="theme-toggle-light-icon" class="h-6 w-6 text-slate-700 dark:text-slate-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+        </button>
+    </div>
+
+    <main class="max-w-4xl mx-auto space-y-8">
+
+        <!-- Header -->
+        <header class="text-center py-8">
+            <h1 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-amber-500 dark:text-amber-400 tracking-wider">[Character Name]</h1>
+            <p class="mt-2 text-xl sm:text-2xl subtitle-text font-cinzel tracking-wide">[Character Subtitle or Title]</p>
+             <img id="runemark-img" src="https://placehold.co/128x128/f1f5f9/1e3a8a?text=Icon" 
+                 alt="Character Icon" 
+                 class="mx-auto mt-6 mb-2 w-32 h-auto">
+        </header>
+
+        <!-- Dynamic Style for image filter -->
+        <style>
+            #runemark-img {
+                filter: none;
+            }
+            .dark #runemark-img {
+                filter: invert(85%) sepia(25%) saturate(1500%) hue-rotate(350deg) brightness(100%) contrast(95%);
+            }
+        </style>
+
+        <!-- All Cards -->
+        <div class="space-y-8">
+            <!-- Basic Traits -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Basic Traits</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                            <div><span class="font-bold label-text">Nickname:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Sex:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Race:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Height:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Body Type:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Eyes:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Skin:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Hair:</span> [Value]</div>
+                            <div><span class="font-bold label-text">Birthplace:</span> [Value]</div>
+                        </div>
+                        <p class="mt-4"><span class="font-bold label-text">Purpose:</span> [Describe the character's main goal or purpose.]</p>
+                        <p class="mt-2"><span class="font-bold label-text">Physical Appearance:</span> [Describe the character's physical appearance in more detail.]</p>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/500x500/f1f5f9/1e3a8a?text=Character+Portrait" alt="Character Appearance" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Character Traits -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Character Traits</h2>
+                <div class="space-y-3 text-lg">
+                    <p><span class="trait-title text-red-600 dark:text-red-400">Fatal Flaw:</span> [Describe the character's most significant flaw.]</p>
+                    <p><span class="trait-title text-red-500 dark:text-red-500">Flaws:</span> [List other flaws or negative traits.]</p>
+                    <p><span class="trait-title text-purple-600 dark:text-purple-400">Fears:</span> [What does the character fear most?]</p>
+                    <p><span class="trait-title text-blue-600 dark:text-blue-400">Ambition:</span> [What is the character's ultimate ambition?]</p>
+                    <p><span class="trait-title text-teal-600 dark:text-teal-400">Ideals:</span> [What ideals does the character live by?]</p>
+                    <p><span class="trait-title text-green-600 dark:text-green-400">Strengths:</span> [List the character's key strengths.]</p>
+                    <p><span class="trait-title text-yellow-600 dark:text-yellow-400">Weaknesses:</span> [List other weaknesses or vulnerabilities.]</p>
+                </div>
+            </section>
+
+            <!-- Religion -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Religion</h2>
+                <div class="space-y-4 prose prose-slate dark:prose-invert max-w-none">
+                    <p>[Describe the character's religious beliefs, philosophy, or lack thereof. Who or what do they worship or follow?]</p>
+                    <p>[You can add another paragraph here for more detail, such as a significant event related to their faith.]</p>
+                </div>
+            </section>
+
+            <!-- Combat Skills -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Combat Skills</h2>
+                <div class="space-y-4">
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">[Skill Name]:</span> [Skill description goes here.]</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">[Skill Name]:</span> [Skill description goes here.]</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">[Skill Name]:</span> [Skill description goes here.]</p>
+                </div>
+            </section>
+
+            <!-- Equipment -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Equipment</h2>
+                <div class="space-y-4">
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">[Item Name] (Quality):</span> [Item description.]</p></div>
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">[Item Name] (Quality):</span> [Item description.]</p></div>
+                    <div><p><span class="equipment-item-title text-amber-700 dark:text-amber-500">[Item Name] (Quality):</span> [Item description.]</p></div>
+                </div>
+            </section>
+
+            <!-- Companion -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Companion</h2>
+                <p><span class="font-bold text-amber-600 dark:text-amber-500">[Companion Name], the [Companion Type]:</span> [Description of the companion and their species/type. If the character has no companion, this section can be removed.]</p>
+            </section>
+
+            <!-- Companion Skills -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Companion Skills ([Companion Name])</h2>
+                <div class="space-y-4">
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">[Skill Name]:</span> [Skill description goes here.]</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">[Skill Name]:</span> [Skill description goes here.]</p>
+                    <p><span class="font-bold text-amber-600 dark:text-amber-500">[Skill Name]:</span> [Skill description goes here.]</p>
+                </div>
+            </section>
+
+            <!-- Aethyric Connection -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Aethyric Connection</h2>
+                <p>[Describe the character's relationship with magic. Are they a wizard, a priest, or do they have no magical ability at all?]</p>
+            </section>
+
+            <!-- Backstory -->
+            <section class="card p-6 border border-slate-300 dark:border-slate-700 backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Backstory</h2>
+                <div class="space-y-4 prose prose-slate dark:prose-invert max-w-none">
+                    <p>[Start the character's backstory here. Describe their early years, formative events, and recent history.]</p>
+                    <p>[Use multiple paragraphs to flesh out the character's life story and motivations.]</p>
+                    <p>[Conclude the backstory with where the character is now and what they are currently doing.]</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme() {
+            const isDarkMode = localStorage.getItem('theme') === 'dark';
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            const isDarkMode = localStorage.getItem('theme') === 'dark';
+            if (isDarkMode) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+            applyTheme();
+        });
+
+        // Apply theme on initial load to set icons and class correctly
+        applyTheme();
+    </script>
+</body>
+</html>
+
