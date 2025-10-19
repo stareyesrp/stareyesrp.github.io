@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaelen Vor - Knight-Errant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f4f8; /* Muted Grey-Blue */
+            --text-color: #334155; /* Dark Slate */
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --header-text: #1e3a8a; /* Deep Imperial Blue */
+            --subtitle-text: #475569; /* Slate Grey */
+            --highlight-color: #991b1b; /* Blood Red */
+            --border-color: #dbeafe; /* Light Blue-Grey */
+            --icon-bg: rgba(255, 255, 255, 0.6);
+            --icon-text: #374151;
+        }
+
+        html.dark {
+            --bg-color: #1e293b; /* Dark Slate */
+            --text-color: #cbd5e1; /* Light Slate */
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --header-text: #bfdbfe; /* Lighter Imperial Blue */
+            --subtitle-text: #94a3b8; /* Muted Slate */
+            --highlight-color: #991b1b; /* Lighter Blood Red */
+            --border-color: rgba(51, 65, 85, 0.5);
+            --icon-bg: rgba(51, 65, 85, 0.6);
+            --icon-text: #d1d5db;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .card {
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+        }
+        .header-text { color: var(--header-text); }
+        .subtitle-text { color: var(--subtitle-text); }
+        .header-border { border-color: var(--border-color); }
+        .highlight { color: var(--highlight-color); }
+        .theme-icon-button {
+            background-color: var(--icon-bg);
+            color: var(--icon-text);
+        }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="antialiased p-4 sm:p-6 lg:p-8">
+    
+    <div class="fixed top-4 left-4 z-10 flex items-center space-x-2">
+        <button id="theme-toggle" title="Toggle Dark/Light Mode" class="theme-icon-button p-2 rounded-full backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg id="theme-toggle-dark-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg id="theme-toggle-light-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+        </button>
+    </div>
+
+    <main class="max-w-4xl mx-auto space-y-8">
+
+        <header class="text-center py-8">
+            <h1 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold header-text tracking-wider">KAELEN VOR</h1>
+            <p class="mt-2 text-xl sm:text-2xl subtitle-text font-cinzel tracking-wide">Knight-Errant | The Last Hound</p>
+            <img src="https://placehold.co/200x200/1e293b/bfdbfe?text=XII" 
+                 alt="Shattered Legion Symbol" 
+                 class="mx-auto mt-6 w-48 h-48 shadow-lg rounded-full border-4 border-gray-300 dark:border-gray-600">
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-8">
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Basic Traits</h2>
+                    <div class="space-y-2">
+                        <p><strong class="highlight">Nickname:</strong> Vor</p>
+                        <p><strong class="highlight">Sex:</strong> Male</p>
+                        <p><strong class="highlight">Race:</strong> Adeptus Astartes (Transhuman)</p>
+                        <p><strong class="highlight">Height:</strong> 8'4" (in armour)</p>
+                        <p><strong class="highlight">Body Type:</strong> Broad-shouldered and heavily muscled, yet retaining a lean, predatory build. His body is a roadmap of scars.</p>
+                        <p><strong class="highlight">Eyes:</strong> Pale, ice-blue, often bloodshot from the strain of the Butcher's Nails.</p>
+                        <p><strong class="highlight">Skin:</strong> Pallid Terran grey, stretched taut over his features.</p>
+                        <p><strong class="highlight">Hair:</strong> Dark brown, cropped close to the scalp and prematurely grey at the temples.</p>
+                        <p><strong class="highlight">Birthplace:</strong> The chem-blasted underhives of Terra.</p>
+                    </div>
+                </section>
+
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Beliefs</h2>
+                    <div class="space-y-4">
+                        <p>Kaelen was a firm believer in the Imperial Truth. The Emperor's vision of a galaxy free from superstition and faith was a cause he would have died for. Now, with the galaxy aflame and daemons tearing at the fabric of reality, that belief has been shattered. He fights not for a god he never acknowledged, but for the memory of what the Imperium was meant to be, and for vengeance against those who destroyed it.</p>
+                    </div>
+                </section>
+                
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Warp Talent</h2>
+                    <p>None. He possesses a deep-seated hatred for the warp and its machinations. The Butcher's Nails implanted in his skull, however, are a constant source of agony that sings in harmony with bloodshed, a torturous neurological echo of the powers he despises.</p>
+                </section>
+            </div>
+            
+            <div class="space-y-8">
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Character Traits</h2>
+                    <div class="space-y-3">
+                        <p><strong class="highlight">Fatal Flaw:</strong> The Butcher's Nails. His greatest weapon is also his most profound weakness. The fight to control the rage is a constant battle, and failure could turn him into the very monster he hunts.</p>
+                        <p><strong class="highlight">Fears:</strong> Losing control and becoming no different than his traitor kin. His memories of the brothers he was forced to kill on Istvaan III.</p>
+                        <p><strong class="highlight">Ambition:</strong> To stand before his fallen Primarch, Angron, and deliver the Emperor's justice personally.</p>
+                        <p><strong class="highlight">Ideals:</strong> He clings to the memory of the War Hounds and the ideals of loyalty and brotherhood that his Legion abandoned.</p>
+                        <p><strong class="highlight">Strengths:</strong> Unbreakable will, masterful skill in close-quarters combat, and a tactical mind forged in the fires of the Great Crusade.</p>
+                        <p><strong class="highlight">Weaknesses:</strong> Crippling survivor's guilt, an inability to trust others easily, and a deep-seated melancholy that surfaces in the quiet moments between battles.</p>
+                    </div>
+                </section>
+
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Combat Skills</h2>
+                    <div class="space-y-4">
+                        <p><strong class="highlight">Pit Fighter's Fury:</strong> Kaelen was a master of the brutal, close-quarters fighting style his Legion championed. He moved with a savage grace, turning any environment into an arena where his chainaxe was king.</p>
+                        <p><strong class="highlight">Breacher Assault Specialist:</strong> He excelled in shock assaults, a living battering ram who could shatter enemy formations and fortifications through sheer, focused aggression.</p>
+                        <p><strong class="highlight">Survivor's Cunning:</strong> The horrors of the Horus Heresy taught him a new way to fight. He became adept at guerrilla warfare, using stealth and ambush to hunt his former brothers in the shadows.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <div class="space-y-8">
+            <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Equipment</h2>
+                <div class="space-y-4">
+                    <p><strong class="highlight">'Oathkeeper' Executioner Chainsword:</strong> A master-crafted chainsword, its ceramite casing bearing the faded white and blue of the War Hounds. Its teeth were replaced with adamantite salvaged from a fallen captain's blade on Istvaan III.</p>
+                    <p><strong class="highlight">Modified Mk.IV Power Armour:</strong> His 'Maximus' pattern plate was a patchwork of scavenged parts and hasty repairs. The original Legion colours were almost entirely obscured by unpainted ceramite, tally marks, and the scars of a hundred desperate battles. Only a single pauldron remained, displaying the shattered symbol of his Legion.</p>
+                    <p><strong class="highlight">Sigillite's Cipher:</strong> A plain, unassuming data-slate that marked him as a Knight-Errant. It was his only link to Malcador's network, his sole connection in a galaxy that wanted him dead.</p>
+                </div>
+            </section>
+            
+            <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Appearance</h2>
+                <p>Beneath his battered helmet was the face of a man who had seen too much war. His features were sharp, almost gaunt, with deep-set eyes that burned with a cold fire. Crude, silvery cables—the terminals of the Butcher's Nails—were visible at his temples, snaking back into the base of his skull. His jaw was perpetually tight, as if holding back a scream. His armour, once a symbol of the Emperor's light, was now a testament to the darkness that had consumed the galaxy. It was the armour of a ghost, a relic of a forgotten age of loyalty.</p>
+                 <img src="https://cdn.imgchest.com/files/6d64c4bab1bc.png" 
+                     alt="Character Image Placeholder" 
+                     class="w-full h-auto rounded-lg shadow-md border mt-4 border-gray-300 dark:border-gray-600">
+            </section>
+
+            <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Backstory</h2>
+                <div class="space-y-4 text-justify">
+                    <p>Kaelen Vor was once a son of the XIIth Legion, the War Hounds. He was raised on Terra and took to the stars with pride, a warrior of the Great Crusade who brought worlds into the light of the Emperor. He remembered the brotherhood, the honour, the sense of purpose. And he remembered when it all began to die. The day their lost Primarch, Angron, was found, he brought with him the Butcher's Nails, and the Legion's soul began to bleed out. The calculated fury of the War Hounds was replaced by the mindless rage of the World Eaters, and Kaelen fought a war on two fronts: one against the enemies of mankind, the other against the device hammered into his own skull.</p>
+                    <p>The first betrayal came at Istvaan III. He was deployed to the surface alongside other loyalists from the traitor legions, a force sent to die under the shadow of their own fleet. When the virus bombs fell, he survived only by taking shelter deep within a fortified bunker. When he emerged, it was to a world of ghosts and monsters wearing the faces of his brothers. He fought alongside Captain Tarvitz and the other survivors in a hopeless battle, a bloody last stand against a galaxy that had turned on them. Kaelen was one of the few who managed to escape the planet's surface aboard a commandeered Stormbird, his heart heavy with the ghosts of the fallen.</p>
+                    <p>The final betrayal was the news of the Dropsite Massacre on Istvaan V, an act of treachery that extinguished the last embers of hope for a swift loyalist victory. For years, Kaelen was adrift, a warrior without a legion, a son without a father. He fought a quiet, desperate war in the shadows, hunted by his former kin. It was then that agents of Malcador the Sigillite found him. They did not offer him redemption or peace, for they knew such things were no longer possible. They offered him a purpose. They offered him a chance for vengeance. Kaelen Vor, the War Hound, died in the dust of Istvaan. In his place stood a Knight-Errant, a blade in the dark, tasked with hunting the very traitors he once called brother.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                if (lightIcon && darkIcon) {
+                    lightIcon.style.display = 'block';
+                    darkIcon.style.display = 'none';
+                }
+            } else {
+                document.documentElement.classList.remove('dark');
+                 if (lightIcon && darkIcon) {
+                    darkIcon.style.display = 'block';
+                    lightIcon.style.display = 'none';
+                }
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'light';
+            } else {
+                localStorage.theme = 'dark';
+            }
+            applyTheme();
+        });
+
+        applyTheme();
+    </script>
+</body>
+</html>
