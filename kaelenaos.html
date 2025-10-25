@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page Title Updated -->
+    <title>Character Profile: Kaelen Stonefang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdf2f8;
+            --text-color: #4b5563;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --header-text: #9f1239;
+            --subtitle-text: #be123c;
+            --highlight-color: #9f1239;
+            --border-color: #fecaca;
+            --icon-bg: rgba(255, 255, 255, 0.6);
+            --icon-text: #374151;
+        }
+
+        html.dark {
+            --bg-color: #1e0303;
+            --text-color: #fca5a5;
+            --card-bg: rgba(43, 0, 0, 0.7);
+            --header-text: #fda4af;
+            --subtitle-text: #f43f5e;
+            --highlight-color: #fb7185;
+            --border-color: rgba(127, 29, 29, 0.5);
+            --icon-bg: rgba(51, 65, 85, 0.6);
+            --icon-text: #d1d5db;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .card {
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+        }
+        .header-text { color: var(--header-text); }
+        .subtitle-text { color: var(--subtitle-text); }
+        .header-border { border-color: var(--border-color); }
+        .highlight { color: var(--highlight-color); }
+        .theme-icon-button {
+            background-color: var(--icon-bg);
+            color: var(--icon-text);
+        }
+    </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="antialiased p-4 sm:p-6 lg:p-8">
+    
+    <div class="fixed top-4 left-4 z-10 flex items-center space-x-2">
+        <a href="index.html" title="Go to Home Page" class="theme-icon-button p-2 rounded-full backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+        </a>
+        <button id="theme-toggle" title="Toggle Dark/Light Mode" class="theme-icon-button p-2 rounded-full backdrop-blur-sm shadow-md transition-transform hover:scale-110 hover:shadow-lg">
+            <svg id="theme-toggle-dark-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg id="theme-toggle-light-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+        </button>
+    </div>
+
+    <main class="max-w-4xl mx-auto space-y-8">
+
+        <header class="text-center py-8">
+            <!-- CHARACTER NAME -->
+            <h1 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold header-text tracking-wider">KAELEN STONEFANG</h1>
+            <!-- TITLE | ARCHETYPE -->
+            <p class="mt-2 text-xl sm:text-2xl subtitle-text font-cinzel tracking-wide">Lord-Relictor | Monster-Hunter</p>
+            <img src="https://placehold.co/200x200/1e0303/fda4af?text=Stonefang" 
+                 alt="Stonefang Symbol" 
+                 class="mx-auto mt-6 w-48 h-48 shadow-lg rounded-full border-4 border-white dark:border-red-900">
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-8">
+                <!-- BASIC TRAITS -->
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Basic Traits</h2>
+                    <div class="space-y-2">
+                        <p><strong class="highlight">Nickname:</strong> "First Fang" (Mortal title), "Stonefang"</p>
+                        <p><strong class="highlight">Sex:</strong> Male</p>
+                        <p><strong class="highlight">Race:</strong> Stormcast Eternal (Human, Reforged)</p>
+                        <p><strong class="highlight">Height:</strong> Immense, even for a Stormcast.</p>
+                        <p><strong class="highlight">Body Type:</strong> Heavy, powerful, and muscular.</p>
+                        <p><strong class="highlight">Eyes:</strong> Pale and watchful.</p>
+                        <p><strong class="highlight">Skin:</strong> Weathered, tan.</p>
+                        <p><strong class="highlight">Hair:</strong> Dark brown or black, likely greying.</p>
+                        <p><strong class="highlight">Birthplace:</strong> Foothills of the Jagged Spine mountains, Ghur.</p>
+                    </div>
+                </section>
+
+                <!-- RELIGION -->
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Religion</h2>
+                    <div class="space-y-4">
+                        <p>Loyal to Sigmar, but his primal Ghurish spirit chafes against the rigid doctrine. He views Sigmar's power as a raw, natural storm rather than a civilized faith.</p>
+                    </div>
+                </section>
+                
+                <!-- AETHYRIC CONNECTION -->
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Aethyric Connection</h2>
+                    <p>Channels the power of the Celestial Storm (Azyr), but his connection is filtered through his primal Ghurish spirit. His magic feels less like divine light and more like a raw, mountain thunderstorm—a force of nature, not faith.</p>
+                </section>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- CHARACTER TRAITS -->
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Character Traits</h2>
+                    <div class="space-y-3">
+                        <p><strong class="highlight">Fatal Flaw:</strong> Too savage; he *enjoys* the slaughter and the hunt more than a holy warrior should.</p>
+                        <p><strong class="highlight">Fears:</strong> Losing the last bits of his mortal self with every reforging, becoming nothing but a mindless, golden tool.</p>
+                        <p><strong class="highlight">Ambition:</strong> To hunt the unnatural taints of Chaos and protect his 'pack'.</p>
+                        <p><strong class="highlight">Ideals:</strong> The primal covenant of the hunt (kill or be killed); a fierce, animalistic need to protect his "pack."</p>
+                        <p><strong class="highlight">Strengths:</strong> *Hunter's Instinct.* Kaelen's senses are supernaturally sharp. He can track a foe across realms, sense the "taint" of Chaos, and often predicts an enemy's movements on pure instinct. Adept at felling beasts of any size.</p>
+                        <p><strong class="highlight">Weaknesses:</strong> Suspicious of 'civilized' folk; is, in turn, viewed with suspicion by his brethren.</p>
+                    </div>
+                </section>
+
+                <!-- COMBAT SKILLS -->
+                <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                    <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Combat Skills</h2>
+                    <div class="space-y-4">
+                        <p><strong class="highlight">Prayers of the Storm:</strong> Can call down lightning or wreathe his allies in storm-auras. Protecting them from enemy magics, blades and even empowering their own strikes.</p>
+                        <p><strong class="highlight">Binding and Banishment:</strong> His primary duty. He excels at forcing malign spirits, daemons, and echoes of the slain to depart the Mortal Realms, often in smokes of blinding primal lightning strikes. This also applies to binding his own allies’ souls to his Reliquary.</p>
+                        <p><strong class="highlight">Cauterizing Bolt:</strong> Kaelen's "healing" is a primal, violent act. He calls down a targeted, agonizing jolt of raw lightning, not to soothe, but to *cauterize*. The bolt sears wounds shut, burns out corruption, and shocks the ally's spirit back to full fighting strength.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <div class="space-y-8">
+            <!-- EQUIPMENT -->
+            <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Equipment</h2>
+                <div class="space-y-4">
+                    <p><strong class="highlight">Relic Hammer:</strong> A potent holy weapon. Kaelen wields his with savage force, treating it less like a symbol of faith and more like a primal, bone-shattering club.</p>
+                    <p><strong class="highlight">Heavy-bladed Storm-glaive:</strong> Often magnetically clasped to his armor's pack. He uses it as a hunter's spear for powerful, gutting thrusts and heavy, severing blows against larger beasts.</p>
+                    <p><strong class="highlight">Ghurish Hatchet:</strong> A heavy-bladed hatchet (reminiscent of his mortal weapon) carried at his hip for close-quarters work.</p>
+                    <p><strong class="highlight">Armor:</strong> Mortis Armor, heavily scarred from countless battles. It is adorned with trophies: beast fangs, thick pelts, and totem-like carvings.</p>
+                    <p><strong class="highlight">Icon:</strong> A back-mounted **Reliquary Icon** (containing holy relics or bones to channel his power).</p>
+                    <p><strong class="highlight">Important Item:</strong> A single, massive, Slaanesh-tainted fang from the Chimera that killed him in his mortal life. He has fastened it to his shoulder pauldron as a reminder of his death and purpose.</p>
+                </div>
+            </section>
+            
+            <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Appearance</h2>
+                <img src="https://placehold.co/1200x800/1e0303/fda4af?text=Character+Image" 
+                     alt="Character Image Placeholder" 
+                     class="w-full h-auto rounded-lg shadow-md border border-red-200 dark:border-red-800">
+            </section>
+
+            <!-- BACKSTORY -->
+            <section class="card p-6 border backdrop-blur-lg rounded-xl shadow-lg">
+                <h2 class="font-cinzel text-2xl font-bold header-text border-b header-border pb-2 mb-4">Backstory</h2>
+                <div class="space-y-4">
+                    <p>In the savage foothills of the Jagged Spine mountains in Ghur, Kaelen was not a soldier or a king; he was the First Fang of the Cliff-Eater tribe. His life was a brutal, relentless cycle of hunt, feast, and survival. He led the hunting parties that brought down carnosaurian tyrants and rock-skinned behemoths, providing the bone, meat, and hide his people needed to see the next sunrise. He was a creature of pure instinct, bound not by laws but by the primal covenant of the hunt: kill, or be killed and feed the next generation. He respected the great beasts he hunted, seeing their strength as a mirror of his own, and despised the creeping taint of Chaos that warped them into unnatural horrors.</p>
+                    <p>His death was not a glorious last stand against a gleaming champion of the Dark Gods. It was a bloody, desperate, and muddy affair. A warherd of Gors, led by a Slaaneshi-tainted Chimera, descended on his tribe's cavern-enclave during the height of the monsoon season. Kaelen and his hunters met them in the rain-slicked gorge that served as their only entrance. He fought with spear and hatchet, his howls matching the braying of the beastmen, and ultimately buried his hatchet in the Chimera's skull. But he was overwhelmed by sheer numbers, dying with his teeth locked in a Gor's throat as a dozen spears pierced his back.</p>
+                    <p>Sigmar plucked that raw, furious spirit from the ether just as it was being dragged toward the insatiable maws of the Chaos Gods. The reforging was agony. It felt like being caged, like having his fangs filed down and his instincts smothered in celestial light and holy purpose. He emerged as Kaelen Stonefang, a Lord-Relictor in the Astral Templars. His innate, primal connection to the spirits of Ghur was reforged into a divine mandate to bind and banish. The savage joy of the hunt was replaced by the cold, righteous fury of the storm, but the change was imperfect.</p>
+                    <!-- Added fourth paragraph from the source file -->
+                    <p>Now, Stonefang serves the God-King, but the beast within him chafes against the holy armor. He is a loyal and devastatingly effective weapon for Sigmar, especially when unleashed in his native Realm of Ghur, where he moves like a ghost from his own past. But his fellow Stormcast eyed him with suspicion. He seems to *enjoy* the slaughter too much, and the prayers he intones to bind malign spirits sound more like the growling challenges of a predator than a litany of faith. Kaelen fears the day the beast breaks its cage, but he fears something more: that with every reforging, another piece of the man he was is chipped away, leaving only the cold, golden, mindless *tool*.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function applyTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                lightIcon.style.display = 'block';
+                darkIcon.style.display = 'none';
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.style.display = 'block';
+                lightIcon.style.display = 'none';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'light';
+            } else {
+                localStorage.theme = 'dark';
+            }
+            applyTheme();
+        });
+
+        // Apply theme on initial load
+        applyTheme();
+    </script>
+</body>
+</html>
